@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./sprint-4-images/logotip.svg" alt="логотип">
+    </header>
+    <main class="content">
+
+        <section class="profile">
+            <img class="profile__avatar" src="./sprint-4-images/zhak.jpg">
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <p class="profile__comment">Исследователь океана</p>
+                <button class="profile__edit-button" type="button"></button>
+            </div>
+            <button class="profile__add-button"></button>
+        </section>
+
+        <section class="elements">
+            <div class="element">
+                <img class="element__image" src="./sprint-4-images/karachaevsk.jpg">
+                <div class="element__content">
+                    <p class="element__name">Карачаевск</p>
+                    <button class="element__like"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./sprint-4-images/elbr.jpg">
+                <div class="element__content">
+                    <p class="element__name">Гора Эльбрус</p>
+                    <button class="element__like"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./sprint-4-images/domb.jpg">
+                <div class="element__content">
+                    <p class="element__name">Домбай</p>
+                    <button class="element__like"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./sprint-4-images/elbr.jpg">
+                <div class="element__content">
+                    <p class="element__name">Гора Эльбрус</p>
+                    <button class="element__like"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./sprint-4-images/domb.jpg">
+                <div class="element__content">
+                    <p class="element__name">Домбай</p>
+                    <button class="element__like"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./sprint-4-images/karachaevsk.jpg">
+                <div class="element__content">
+                    <p class="element__name">Карачаевск</p>
+                    <button class="element__like"></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+    </footer>
+
+    <section class="popup">
+        <div class="popup__container">
+            <button class="popup__close"></button>
+            <h2 class="popup__header">Редактировать профиль</h2>
+            <input type="text" class="popup__input popup__name" id="input__name" name="name" value="Жак-Ив Кусто"
+                placeholder="Введите ваше имя" required minlength="3" maxlength="15">
+            <input type="text" class="popup__input popup__comment" id="input__comment" name="comment" value="Исследователь океана"
+                placeholder="Расскажите о себе" required minlength="3" maxlength="45">
+            <button class="popup__save" type='submit'>Сохранить</button>
+        </div>
+    </section>
+
+<script src="./pages/index.js"></script>
+</body>
+
+</html>

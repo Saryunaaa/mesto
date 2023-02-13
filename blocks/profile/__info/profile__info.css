@@ -1,0 +1,22 @@
+.profile__info {
+    max-width: 336px;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+        'name edit-button'
+        'comment .';
+    grid-template-columns: 1fr min-content;
+    gap: 16px 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__info {
+        margin: 22px auto 36px;
+        grid-template-areas:
+            'name edit-button'
+            'comment';
+        grid-template-columns: 1fr min-content;
+        max-width: 282px;
+        gap: 15px 0;
+    }
+}
