@@ -1,5 +1,5 @@
 .element__like {
-  background: transparent url(../../../sprint-4-images/heart.svg);
+  background: transparent url(../../../images/heart.svg);
   min-width: 24px;
   min-height: 24px;
   border: 1px solid #FFF;
@@ -8,6 +8,7 @@
   padding: 0;
   cursor: pointer;
   justify-self: end;
+  margin-right: 20px;
 }
 
 .element__like:hover {

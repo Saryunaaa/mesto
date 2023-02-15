@@ -7,4 +7,8 @@
     line-height: 29px;
     color: #000000;
     margin-left: 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 21px;
 }

@@ -1,6 +1,6 @@
 .profile__edit-button {
     grid-area: edit-button;
-    background: transparent url(../../../sprint-4-images/buttonedit.svg);
+    background: transparent url(../../../images/buttonedit.svg);
     transition: all 0.4s ease-in-out;
     width: 24px;
     height: 24px;
@@ -8,7 +8,6 @@
     background-repeat: no-repeat;
     background-position: center;
     margin: 0;
-    align-self: center;
     padding: 0;
     cursor: pointer;
   }

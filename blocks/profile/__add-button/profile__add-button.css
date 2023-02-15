@@ -1,10 +1,11 @@
 .profile__add-button {
-    background: transparent url(../../../sprint-4-images/addbutton.svg);
+    background: transparent url(../../../images/addbutton.svg);
+    background-size: 22px;
     justify-self: flex-end;
     margin-left: auto;
     padding: 0;
     width: 150px;
-    min-height: 50px;
+    height: 50px;
     border: 2px solid white;
     background-repeat: no-repeat;
     background-position: center;
@@ -16,6 +17,7 @@
     .profile__add-button {
       width: 282px;
       margin: 0 auto;
+      background-size: 16px;
     }
   }
 
