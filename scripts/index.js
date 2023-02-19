@@ -9,7 +9,7 @@ const profileComment = document.querySelector('.profile__comment');
 const inputName = popup.querySelector('.popup__input_type_name');
 const inputComment = popup.querySelector('.popup__input_type_comment');
 
-const popupForm = popup.querySelector('.popup__form_name');
+const popupForm = popup.querySelector('.popup__form-name');
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
