@@ -6,20 +6,21 @@ const closeButton = popup.querySelector('.popup__close');
 const profileName = document.querySelector('.profile__name');
 const profileComment = document.querySelector('.profile__comment');
 
-const inputName = popup.querySelector('.popup__input_name');
-const inputComment = popup.querySelector('.popup__input_comment');
+const inputName = popup.querySelector('.popup__input_type_name');
+const inputComment = popup.querySelector('.popup__input_type_comment');
 
-const popupForm = popup.querySelector('.popup__form');
+const popupForm = popup.querySelector('.popup__form_name');
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
-    profileName.textContent = inputName.value;
-    profileComment.textContent = inputComment.value;
-    popup.classList.remove('popup_opened')
+    openForm ();
+    closeForm ();
 };
 
 function openForm () {
-    popup.classList.add('popup_opened')
+    profileName.textContent = inputName.value;
+    profileComment.textContent = inputComment.value;
+    popup.classList.add('popup_opened');
 };
 
 function closeForm () {
