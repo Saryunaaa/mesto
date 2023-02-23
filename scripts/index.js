@@ -13,13 +13,14 @@ const popupForm = popup.querySelector('.popup__form-name');
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
-    openForm ();
+    profileName.textContent = inputName.value; 
+    profileComment.textContent = inputComment.value; 
     closeForm ();
 };
 
 function openForm () {
-    profileName.textContent = inputName.value;
-    profileComment.textContent = inputComment.value;
+    inputName.textContent = profileName.value;
+    inputComment.textContent = profileComment.value;
     popup.classList.add('popup_opened');
 };
 
