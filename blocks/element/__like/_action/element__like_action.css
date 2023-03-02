@@ -1,3 +1,5 @@
 .element__like_action {
-    background: transparent url(../../../../images/activeheart.svg);
+    background: url(../../../../images/Union.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
