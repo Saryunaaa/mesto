@@ -11,14 +11,16 @@
     background-size: contain;
     cursor: pointer;
     align-self: flex-end;
-    margin: -40px -40px;
+    top: -40px;
+    right: -40px;
 }
 
 @media screen and (max-width: 768px) {
     .popup__close {
         max-width: 20px;
         max-height: 20px;
-        margin: -36px 0;
+        top: -36px;
+        right: 0;
     }
 }
 

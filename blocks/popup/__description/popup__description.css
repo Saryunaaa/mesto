@@ -1,4 +1,4 @@
-.popup__image_div-name {
+.popup__description {
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -6,4 +6,6 @@
     line-height: 15px;
     color: #FFFFFF;
     align-self: flex-start;
+    padding-top: 10px;
+    margin: 0;
 }

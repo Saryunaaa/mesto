@@ -1,6 +1,6 @@
 //для попапа профиля
 const editButton = document.querySelector('.profile__edit-button');
-const popupProfile = document.querySelector('.popup__profile');
+const popupProfile = document.querySelector('.popup_profile');
 const closeButton = popupProfile.querySelector('.popup__close-profile');
 const profileName = document.querySelector('.profile__name');
 const profileComment = document.querySelector('.profile__comment');
@@ -10,7 +10,7 @@ const popupFormProfile = popupProfile.querySelector('.popup__form-profile');
 
 //для попапа карточек 
 const addButton = document.querySelector('.profile__add-button');
-const popupCard = document.querySelector('.popup__card');
+const popupCard = document.querySelector('.popup_card');
 const popupCloseButton = popupCard.querySelector('.popup__close-card');
 const popupFormCard = popupCard.querySelector('.popup__form-card');
 const inputTitleCard = popupCard.querySelector('.popup__input_type_title');
@@ -18,10 +18,10 @@ const inputLinkCard = popupCard.querySelector('.popup__input_type_url');
 const popupSaveButton = popupCard.querySelector('.popup__save-card');
 
 //для попапа фотографии
-const popupImage = document.querySelector('.popup__image');
+const popupImage = document.querySelector('.popup_zoom');
 const popupCloseButtonImage = popupImage.querySelector('.popup__close-image');
-const popupLargeImage = popupImage.querySelector('.popup__image_div-img');
-const popupImageName = popupImage.querySelector('.popup__image_div-name');
+const popupLargeImage = popupImage.querySelector('.popup__photo');
+const popupImageName = popupImage.querySelector('.popup__description');
 
 //для добавления новых карточек 
 const templateCard = document.querySelector('#element__card'); //шаблон, по которому будут добавлены карточки
@@ -105,7 +105,7 @@ function handleCardFormSubmit(evt) {
 
 //добавим наши карточки в начало 
 const renderCard = (card) => {
-  sectionCard.append(addNewCard(card));
+  sectionCard.prepend(addNewCard(card));
 };
 //слушатель для сохранения результата
 popupCard.addEventListener('submit', handleCardFormSubmit);
@@ -134,7 +134,6 @@ function closeForm() {
 editButton.addEventListener('click', openForm);
 closeButton.addEventListener('click', closeForm);
 popupFormProfile.addEventListener('submit', handleFormSubmit);
-
 
 
 
