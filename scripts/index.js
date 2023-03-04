@@ -58,7 +58,6 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-
 //функция, которая будет добавлять новые карточки 
 const addNewCard = (card) => {
   const inCard = templateCard.content.querySelector('.element');
@@ -85,18 +84,12 @@ const addNewCard = (card) => {
 
   //открытие большой картинки
   function openPopupImage() {
-    popupImage.classList.add('popup_opened');
+    openPopup(popupImage);
     popupLargeImage.src = cardImage.src;
     popupLargeImage.alt = cardImage.alt;
     popupImageName.textContent = card.name;
   };
   cardImage.addEventListener('click', openPopupImage);
-
-  //закрытие большой картинки 
-  function closePopupImage() {
-    popupImage.classList.remove('popup_opened');
-  };
-  popupCloseButtonImage.addEventListener('click', closePopupImage);
 
   return newCard;
 };
@@ -146,7 +139,6 @@ function closeProfileForm() {
 
 //слушатели (4 спринт)
 editButton.addEventListener('click', openProfileForm);
-profileCloseButton.addEventListener('click', closeProfileForm);
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 
