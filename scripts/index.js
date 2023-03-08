@@ -29,11 +29,32 @@ const sectionCard = document.querySelector('.elements'); // секция, куд
 //общая функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscPress);
 };
 
 //общая функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscPress);
+};
+
+//функция закрытия попапа при нажатии на оверлей 
+const closePopupOverlayClick = document.querySelectorAll('.popup');
+
+closePopupOverlayClick.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(evt.currentTarget);
+    }
+  });
+});
+
+//функция закрытия попапа при нажатии на esc
+function closePopupEscPress(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 };
 
 //функция, открывающая попап карточек 
@@ -142,6 +163,16 @@ editButton.addEventListener('click', openProfileForm);
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 
+const options = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save',
+    disabledButtonClass: 'popup__save_disabled',
+    inputErrorClass: '.popup__input-error',
+    inputSectionSelector: '.popup__section',
+    inputErrorClassActive: 'popup__input-error_active'
+}
 
+enableValidation(options);
 
 
