@@ -25,6 +25,7 @@ const popupImageName = popupImage.querySelector('.popup__description');
 //для добавления новых карточек 
 const templateCard = document.querySelector('#element__card'); //шаблон, по которому будут добавлены карточки
 const sectionCard = document.querySelector('.elements'); // секция, куда мы будем добавлять карты
+const inCard = templateCard.content.querySelector('.element');
 
 //общая функция открытия попапа
 function openPopup(popup) {
@@ -39,9 +40,9 @@ function closePopup(popup) {
 };
 
 //функция закрытия попапа при нажатии на оверлей 
-const closePopupOverlayClick = document.querySelectorAll('.popup');
+const closePopupOverlayClickList = document.querySelectorAll('.popup');
 
-closePopupOverlayClick.forEach((popup) => {
+closePopupOverlayClickList.forEach((popup) => {
   popup.addEventListener("click", (evt) => {
     if (evt.target === evt.currentTarget) {
       closePopup(evt.currentTarget);
@@ -81,7 +82,6 @@ closeButtons.forEach((button) => {
 
 //функция, которая будет добавлять новые карточки 
 const addNewCard = (card) => {
-  const inCard = templateCard.content.querySelector('.element');
   const newCard = inCard.cloneNode(true);
   const cardImage = newCard.querySelector('.element__image');
   const cardTitle = newCard.querySelector('.element__name');
@@ -107,7 +107,7 @@ const addNewCard = (card) => {
   function openPopupImage() {
     openPopup(popupImage);
     popupLargeImage.src = cardImage.src;
-    popupLargeImage.alt = cardImage.alt;
+    popupLargeImage.alt = card.alt;
     popupImageName.textContent = card.name;
   };
   cardImage.addEventListener('click', openPopupImage);
@@ -128,6 +128,8 @@ function handleCardFormSubmit(evt) {
     link: inputLinkCard.value,
   });
   evt.target.reset();
+  evt.submitter.classList.add('popup__save_disabled')
+  evt.submitter.disabled = true;
   closeCardForm(popupCard);
 };
 
@@ -170,7 +172,7 @@ const options = {
     disabledButtonClass: 'popup__save_disabled',
     inputErrorClass: '.popup__input-error',
     inputSectionSelector: '.popup__section',
-    inputErrorClassActive: 'popup__input-error_active'
+    inputErrorClassActive: 'popup__input-error_active',
 }
 
 enableValidation(options);

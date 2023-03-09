@@ -1,4 +1,24 @@
 //6 спринт
+
+const enableValidation = (options) => {
+  const forms = Array.from(document.querySelectorAll(options.formSelector));
+  forms.forEach(form => {
+    setEventListeners(form, options);
+  });
+};
+
+const toggleInputState = (inputElement, options) => {
+  const isValid = inputElement.validity.valid;
+  const inputSectionElement = inputElement.closest(options.inputSectionSelector);
+  const errorElement = inputSectionElement.querySelector(options.inputErrorClass);
+  if (isValid) {
+    hideInputError(errorElement, options.inputErrorClassActive);
+  } else {
+    showInputError(errorElement, inputElement.validationMessage, options.inputErrorClassActive);
+  }
+};
+
+
 const hideInputError = (errorElement, inputErrorClassActive) => {
     errorElement.innerText = '';
     errorElement.classList.remove(inputErrorClassActive);
@@ -7,17 +27,6 @@ const hideInputError = (errorElement, inputErrorClassActive) => {
   const showInputError = (errorElement, message, inputErrorClassActive) => {
     errorElement.innerText = message;
     errorElement.classList.add(inputErrorClassActive);
-  };
-  
-  const toggleInputState = (inputElement, options) => {
-    const isValid = inputElement.validity.valid;
-    const inputSectionElement = inputElement.closest(options.inputSectionSelector);
-    const errorElement = inputSectionElement.querySelector(options.inputErrorClass);
-    if (isValid) {
-      hideInputError(errorElement, options.inputErrorClassActive) ;
-    } else {
-      showInputError(errorElement, inputElement.validationMessage, options.inputErrorClassActive);
-    }
   };
   
   const enableButton = (buttonSubmitElement, disabledButtonClass) => {
@@ -52,11 +61,3 @@ const hideInputError = (errorElement, inputErrorClassActive) => {
     });
     toggleButtonState(inputs, buttonSubmitElement, options.disabledButtonClass);
   };
-  
-  const enableValidation = (options) => {
-    const forms = Array.from(document.querySelectorAll(options.formSelector));
-    forms.forEach(form => {
-      setEventListeners(form, options);
-    });
-  };
-  
