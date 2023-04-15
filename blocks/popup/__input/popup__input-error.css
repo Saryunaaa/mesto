@@ -12,6 +12,7 @@
     left: 0;
     margin: -25px 36px 0;
     opacity: 0;
+    max-height: 30px;
 }
 
 @media screen and (max-width: 768px) {
