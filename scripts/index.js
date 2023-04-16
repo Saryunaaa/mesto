@@ -38,14 +38,9 @@ const popupImageName = popupImage.querySelector('.popup__description');
 //для добавления новых карточек 
 const sectionCard = document.querySelector('.elements'); // секция, куда мы будем добавлять карты
 
-//7 спринт ебучий
+//7 спринт 
 const profileFormValidator = new FormValidator(options, profileForm);
 const cardFormValidator = new FormValidator(options, cardForm);
-
-forms.forEach((formElement) => {
-  const validator = new FormValidator(options, formElement);
-  validator.enableValidation();
-});
 
 //общая функция открытия попапа
 function openPopup(popup) {
@@ -81,7 +76,7 @@ function closePopupEscPress(evt) {
 //функция, открывающая попап карточек 
 function openCardForm() {
   openPopup(popupCard);
-  cardFormValidator._toggleButtonState();
+  cardFormValidator.clearValidationForm();
 };
 
 // слушатель для открытия попапа 
@@ -134,7 +129,6 @@ function handleCardFormSubmit(evt) {
     link: inputLinkCard.value,
   });
   evt.target.reset();
-  evt.submitter.classList.add('popup__save_disabled')
   evt.submitter.disabled = true;
   closeCardForm(popupCard);
 };
@@ -146,9 +140,9 @@ profileForm.addEventListener('submit', handleProfileFormSubmit);
 //открываем (4 спринт)
 function openProfileForm() {
   openPopup(popupProfile);
-  inputName.textContent = profileName.value;
-  inputComment.textContent = profileJob.value;
-  profileFormValidator._toggleButtonState()
+  inputName.value = profileName.textContent;
+  inputComment.value = profileJob.textContent;
+  profileFormValidator.clearValidationForm()
 };
 
 //попап с изменением имени и описания (4 спринт)

@@ -36,7 +36,8 @@ export default class Card {
      
       // создаём метод кнопки удаления
       _deleteCard() {
-        this._elementDelete.closest('.element').remove();
+        this._element.remove();
+        this._element = null;
         //this._elementDelete.remove();
       }
      

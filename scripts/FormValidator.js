@@ -14,14 +14,14 @@ export default class FormValidator {
 
     //удаляет классы с ошибкой
     _hideInputError = (errorElement) => {
-        errorElement.innerText = '';
-        errorElement.classList.remove(this._inputErrorClassActive);
+        errorElement.textContent = '';
+        errorElement.classList.remove(this._inputErrorClassActive, this._inputSectionSelector);
     };
 
      //сообщает ошибку 
-     _showInputError = (errorElement, message) => {
-        errorElement.classList.add(this._inputErrorClassActive);
-        errorElement.innerText = message;
+     _showInputError = (errorElement, inputElement) => {
+        errorElement.classList.add(this._inputErrorClassActive, this._inputSectionSelector);
+        errorElement.textContent = inputElement.validationMessage;
     };
 
     _toggleInputState = (inputElement) => {
@@ -50,16 +50,16 @@ export default class FormValidator {
 
     _enableButton = () => {
         this._submitButton.classList.remove(this._disabledButtonClass);
-        this._submitButton.disabled = false;
+        this._submitButton.removeAttribute('disabled');
     };
 
     _disableButton = () => {
         this._submitButton.classList.add(this._disabledButtonClass);
-        this._submitButton.disabled = true;
+        this._submitButton.setAttribute('disabled', true);
     };
 
     _toggleButtonState = () => {
-        const formIsValid =this._inputList.every(inputElement => inputElement.validity.valid);
+        const formIsValid = this._inputList.every(inputElement => inputElement.validity.valid);
 
         if (formIsValid) {
             this._enableButton();
@@ -72,14 +72,20 @@ export default class FormValidator {
         this._inputList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._toggleInputState(inputElement);
-                this._toggleButtonState(this._inputList, this._submitButton, this._disabledButtonClass);
+                this._toggleButtonState(this._inputList, this._submitButton);
             });
         });
     };
 
     enableValidation = () => {
-        this._setEventListeners()
-        this._toggleButtonState(this._inputList, this._submitButton, this._disabledButtonClass);
+        this._setEventListeners();
+        this._toggleButtonState();
     };
 
+    clearValidationForm = () => {
+        this._toggleButtonState();
+        this._inputList.forEach((inputElement) => {
+            this._hideInputError(inputElement);
+        })
+    } ;
 }
