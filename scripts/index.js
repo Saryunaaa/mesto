@@ -129,7 +129,7 @@ function handleCardFormSubmit(evt) {
     link: inputLinkCard.value,
   });
   evt.target.reset();
-  evt.submitter.disabled = true;
+  cardFormValidator.clearValidationForm();
   closeCardForm(popupCard);
 };
 
