@@ -12,7 +12,6 @@ const profileForm = document.forms['popup__form-profile'];
 const cardForm = document.forms['popup__form-card'];
 const forms = document.querySelectorAll('.form');
 
-
 const profileFormValidator = new FormValidator(options, profileForm);
 profileFormValidator.enableValidation();
 
@@ -27,7 +26,6 @@ popupNewCard.setEventListeners();
 
 const popupImageOpen = new PopupWithImage('.popup_zoom');
 popupImageOpen.setEventListeners();
-
 
 
 const createNewCard = (title, link, templateSelector, handleCardClick) => {
@@ -64,10 +62,6 @@ function handleCardClick(title, link) {
 };
 
 
-
-
-
-
 const userInfo = new UserInfo({
   profileNameSelector: '.profile__name',
   profileJobSelector: '.profile__comment'
@@ -86,16 +80,3 @@ editButton.addEventListener('click', () => {
 function submitNewUserData(data) {
   userInfo.setUserInfo(data);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
