@@ -7,8 +7,8 @@
   background-position: center;
   padding: 0;
   cursor: pointer;
-  justify-self: end;
-  margin-right: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 .element__like:hover {

@@ -7,3 +7,5 @@ export const options = {
     inputSectionSelector: '.popup__section',
     inputErrorClassActive: 'popup__input-error_active',
   }
+
+export const cardTemplate = document.querySelector('#element__card')

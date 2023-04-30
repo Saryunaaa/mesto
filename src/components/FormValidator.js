@@ -33,14 +33,6 @@ export default class FormValidator {
         }
       };
 
-   /* _checkInputValidity = (inputElement) => {
-        if (inputElement.validity.valid === true) {
-            this._hideInputError(inputElement);
-        } else {
-            this._showInputError(inputElement, inputElement.validationMessage);
-        }
-    }; */
-
     _hasInvalidInput = () => {
         return this._inputList.some((inputElement) => {
             return !inputElement.validity.valid;
@@ -78,7 +70,7 @@ export default class FormValidator {
 
     enableValidation = () => {
         this._setEventListeners();
-        this._toggleButtonState();
+        this._toggleButtonState(this._inputList, this._submitButton);
     };
 
     clearValidationForm = () => {
