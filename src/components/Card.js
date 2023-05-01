@@ -6,7 +6,6 @@ export default class Card {
     this._likes = data.likes;
     this.cardId = data._id;
     this.dataCard = data;
-    this._likeCounter = data.likes.length;
 
     this._userId = userId;
 
@@ -18,7 +17,6 @@ export default class Card {
     this._handleCardUnlike = handleCardUnlike;
 
     this._templateSelector = templateSelector;
-
   }
 
   //разметка 
@@ -30,13 +28,13 @@ export default class Card {
 
   //создаем карточку 
   generateCard() {
-    this._element = this._getTemplate();
+    this.cardElement = this._getTemplate();
 
-    this._elementImage = this._element.querySelector('.element__image'); //кнопка открытия
-    this._elementDelete = this._element.querySelector('.element__delete'); //кнопка удаления
-    this._elementlike = this._element.querySelector('.element__like'); //кнопка лайка
-    this._elementName = this._element.querySelector('element__name');
-    this._elementLikeCounter = this._element.querySelector('element__likes');
+    this._elementImage = this.cardElement.querySelector('.element__image'); //кнопка открытия
+    this._elementDelete = this.cardElement.querySelector('.element__delete'); //кнопка удаления
+    this._elementlike = this.cardElement.querySelector('.element__like'); //кнопка лайка
+    this._elementName = this.cardElement.querySelector('element__name');
+    this._elementLikeCounter = this.cardElement.querySelector('element__likes');
 
     this._elementImage.alt = this._name;
     this._elementImage.src = this._link;
@@ -50,7 +48,7 @@ export default class Card {
 
     this._setEventListeners();
 
-    return this._element;
+    return this.cardElement;
   }
 
   isLiked() {

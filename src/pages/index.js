@@ -15,7 +15,7 @@ const cardForm = document.forms['popup__form-card'];
 const avatarForm = document.forms['popup__form-profile']
 const forms = document.querySelectorAll('.form');
 
-let userCurrentId;
+let userID;
 
 
 const apiConfig = {
@@ -30,9 +30,9 @@ const api = new Api(apiConfig);
 
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
   .then(([resUser, resCard]) => {
-    userCurrentId = resUser._id;
+    userID= resUser._id;
     userInfo.setUserInfo(resUser);
-    sectionCard.renderItems(resCard, userCurrentId)
+    sectionCard.renderItems(resCard, userID)
   })
   .catch((err) => console.log(err));
 
@@ -42,24 +42,23 @@ popupImageOpen.setEventListeners();
 
 //рисуем секцию с карточками
 const sectionCard = new Section({
-  items: [],
-  renderer: (item) => {
-    sectionCard.addCard(createNewCard(item))
-  }
-})
+  renderer: (item, userId) => {
+    sectionCard.addCard(createNewCard(item, userId))
+  },
+}, '.elements')
 
 //создаем карточку 
-const createNewCard = (element) => {
+const createNewCard = (data, user) => {
   const card = new Card({
-   element,
-   cardTemplate,
-   userCurrentId,
+   data: data,
+   userId: user,
+   cardTemplate: '#element__card',
     handleCardClick: () => {
-      popupImageOpen.open(name, link)
+      popupImageOpen.open(data)
     },
 
-    handleCardDelete: () => {
-      popupDelete.open(card)
+    handleCardDelete: (cardId, cardElement) => {
+      popupDelete.open(cardId, cardElement)
     },
 
     handleCardLike: (cardId) => {
@@ -96,7 +95,7 @@ function submitNewCard(data) {
   popupAddCard.renderLoading(true)
   api.addNewCard(data)
     .then((newCard) => {
-      sectionCard.addCard(createNewCard(newCard, userCurrentId));
+      sectionCard.addCard(createNewCard(newCard, userID));
       popupAddCard.close();
     })
     .catch((err) => console.log(err))

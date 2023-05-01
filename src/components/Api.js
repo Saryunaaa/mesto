@@ -70,7 +70,7 @@ export default class Api {
             })
         }).then(res => this._checkErrors(res))
     }
-
+x
     deleteCard(cardId) {
         return fetch(`${this._url}/cards/${cardId}`, {
             method: 'DELETE',
