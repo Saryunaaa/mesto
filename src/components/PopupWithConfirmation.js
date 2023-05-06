@@ -4,12 +4,12 @@ export default class PopupWithConfirmation extends Popup {
     constructor(popupSelector, {submitCallback}) {
         super(popupSelector);
         this._submitCallback = submitCallback;
-        this._submitButton = this._popupSelector.querySelector('.popup__save');
+        this._submitButton = this._popup.querySelector('.popup__save');
     };
 
-    open(cardElement, cardId) {
+    open(card, cardId) {
         this.id = cardId;
-        this.card = cardElement;
+        this.card = card;
         super.open();
     };
 
@@ -24,7 +24,7 @@ export default class PopupWithConfirmation extends Popup {
     setEventListeners() {
         this._submitButton.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._submitCallback(this.id, this.card)
+            this._submitCallback(this.cardId, this.card)
         })
         super.setEventListeners()
     }

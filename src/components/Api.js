@@ -6,10 +6,10 @@ export default class Api {
     }
 
     _checkErrors(res) {
-        if (!res.ok) {
-            return Promise.reject(`Error: ${res.status}`);
+        if (res.ok) {
+            return res.json();
         }
-        return res.json();
+        return Promise.reject(`Error: ${res.status}`);
     }
 
     getProfileInfo() {
@@ -65,13 +65,13 @@ export default class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: data.name,
-                link: data.url,
-            })
+                name: data.title,
+                link: data.link,
+            }),
         }).then(res => this._checkErrors(res))
     }
-x
-    deleteCard(cardId) {
+
+    deleteCardApi(cardId) {
         return fetch(`${this._url}/cards/${cardId}`, {
             method: 'DELETE',
             headers: {
@@ -81,7 +81,7 @@ x
         }).then(res => this._checkErrors(res))
     }
 
-    likeCard(cardId) {
+    likeCardApi(cardId) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'PUT',
             headers: {
@@ -91,7 +91,7 @@ x
         }).then(res => this._checkErrors(res))
     }
 
-    unlikeCard(cardId) {
+    unlikeCardApi(cardId) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'DELETE',
             headers: {
