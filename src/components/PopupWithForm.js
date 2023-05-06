@@ -10,8 +10,8 @@ export default class PopupWithForm extends Popup {
     };
 
     close()  {
-        super.close();
         this._form.reset();
+        super.close();
     };
 
     _getInputValues() {
@@ -31,11 +31,11 @@ export default class PopupWithForm extends Popup {
 	}
 
     setEventListeners() {
-        super.setEventListeners();
-
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._submitCallback(this._getInputValues());
         });
+
+        super.setEventListeners();
     }
 }

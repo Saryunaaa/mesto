@@ -60,13 +60,10 @@ export default class Api {
     addNewCard(data) {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
-            headers: {
-                authorization: this._authorization,
-                'Content-Type': 'application/json'
-            },
+            headers: this._headers,
             body: JSON.stringify({
-                name: data.title,
-                link: data.link,
+                name: data.name,
+                link: data.url,
             }),
         }).then(res => this._checkErrors(res))
     }
@@ -74,30 +71,21 @@ export default class Api {
     deleteCardApi(cardId) {
         return fetch(`${this._url}/cards/${cardId}`, {
             method: 'DELETE',
-            headers: {
-                authorization: this._authorization,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers,
         }).then(res => this._checkErrors(res))
     }
 
     likeCardApi(cardId) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'PUT',
-            headers: {
-                authorization: this._authorization,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers,
         }).then(res => this._checkErrors(res))
     }
 
     unlikeCardApi(cardId) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'DELETE',
-            headers: {
-                authorization: this._authorization,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers,
         }).then(res => this._checkErrors(res))
     }
 }

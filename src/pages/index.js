@@ -13,7 +13,7 @@ import Api from "../components/Api.js";
 const forms = document.querySelectorAll('.form');
 const profileForm = document.forms['popup__form-profile'];
 const cardForm = document.forms['popup__form-card'];
-const avatarForm = document.forms['popup__form-profile']
+const avatarForm = document.forms['popup__form-avatar']
 
 const apiConfig = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-64',
@@ -51,7 +51,7 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
     userId = resData._id;
     userInfo.setUserInfo(resData);
     userInfo.setUserAvatar(resData);
-    sectionCard.renderItems(resCard, resData)
+    sectionCard.renderItems(resCard)
   })
   .catch((err) => console.log(err));
 
@@ -77,7 +77,7 @@ function submitNewCard(data) {
     .then((res) => {
       const newCard = createNewCard(res, userId, '#element__card', handleCardClick, handleCardDelete, handleCardLike);
       popupAddCard.close();
-      sectionCard.addItemAppend(newCard);
+      sectionCard.addCard(newCard);
     })
     .catch((err) => console.log(err))
     .finally(() => {
@@ -101,9 +101,9 @@ editButton.addEventListener('click', () => {
   profileFormValidator.clearValidationForm();
 });
 
-function submitNewInfo(inputData) {
+function submitNewInfo(inputNewData) {
   popupProfileOpen.renderLoading(true)
-  api.editProfileInfo(inputData)
+  api.editProfileInfo(inputNewData)
     .then((res) => {
       userInfo.setUserInfo(res);
       popupProfileOpen.close();
@@ -127,9 +127,9 @@ editAvatarButton.addEventListener('click', () => {
 })
 
 
-function submitNewAvatar(inputData) {
+function submitNewAvatar(inputNewData) {
   popupAvatar.renderLoading(true)
-  api.editProfileAvatar(inputData)
+  api.editProfileAvatar(inputNewData)
     .then((res) => {
       userInfo.setUserAvatar(res);
       popupAvatar.close();
@@ -153,7 +153,7 @@ function submitDeleteCard(cardId, card) {
   popupDelete.renderLoading(true);
   api.deleteCardApi(cardId)
     .then(() => {
-      card.deleteCardApi();
+      card.deleteCard();
       popupDelete.close();
     })
     .catch((err) => console.log(err))
@@ -170,13 +170,13 @@ function handleCardClick(title, link) {
 
 
 function handleCardLike(card, cardId, isLiked) {
-  if (!isLiked) {
-    api.likeCardApi(cardId)
-      .then(res => card.likeCards(res))
-      .catch(err => console.log(err))
-  } else {
+  if (isLiked) {
     api.unlikeCardApi(cardId)
       .then(res => card.unlikeCards(res))
+      .catch(err => console.log(err))
+  } else {
+    api.likeCardApi(cardId)
+      .then(res => card.likeCards(res))
       .catch(err => console.log(err))
   }
 }
