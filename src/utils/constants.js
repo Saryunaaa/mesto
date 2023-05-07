@@ -1,3 +1,11 @@
+export const apiConfig = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-64',
+  headers: {
+    authorization: '7a2f82a6-78fe-4f1a-86b7-9c43d46e789f',
+    'Content-Type': "application/json"
+  }
+}
+
 export const forms = document.querySelectorAll('.form');
 export const profileForm = document.forms['popup__form-profile'];
 export const cardForm = document.forms['popup__form-card'];
@@ -17,5 +25,3 @@ export const options = {
     inputSectionSelector: '.popup__section',
     inputErrorClassActive: 'popup__input-error_active',
   }
-
-

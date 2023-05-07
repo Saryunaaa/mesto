@@ -1,5 +1,5 @@
 import './index.css'; // добавьте импорт главного файла стилей
-import {forms, profileForm, cardForm, avatarForm, userId, editAvatarButton, editButton, addButton, options } from "../utils/constants.js";
+import {apiConfig, forms, profileForm, cardForm, avatarForm, userId, editAvatarButton, editButton, addButton, options } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -11,14 +11,6 @@ import Api from "../components/Api.js";
 
 
 //экземпляры 
-const apiConfig = {
-  url: 'https://mesto.nomoreparties.co/v1/cohort-64',
-  headers: {
-    authorization: '7a2f82a6-78fe-4f1a-86b7-9c43d46e789f',
-    'Content-Type': "application/json"
-  }
-}
-
 const popupAddCard = new PopupWithForm('.popup_card', submitNewCard);
 const popupProfileOpen = new PopupWithForm('.popup_profile', submitNewInfo);
 const popupAvatar = new PopupWithForm('.popup_avatar', submitNewAvatar);
