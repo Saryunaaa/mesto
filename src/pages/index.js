@@ -1,6 +1,5 @@
 import './index.css'; // добавьте импорт главного файла стилей
-import {forms, profileForm, cardForm, avatarForm, userId, editAvatarButton, editButton, addButton } from "../utils/constants.js";
-import { options } from "../utils/options.js";
+import {forms, profileForm, cardForm, avatarForm, userId, editAvatarButton, editButton, addButton, options } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
