@@ -1,4 +1,5 @@
 import './index.css'; // добавьте импорт главного файла стилей
+import {forms, profileForm, cardForm, avatarForm, userId, editAvatarButton, editButton, addButton } from "../utils/constants.js";
 import { options } from "../utils/options.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
@@ -10,11 +11,7 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Api from "../components/Api.js";
 
 
-const forms = document.querySelectorAll('.form');
-const profileForm = document.forms['popup__form-profile'];
-const cardForm = document.forms['popup__form-card'];
-const avatarForm = document.forms['popup__form-avatar']
-
+//экземпляры 
 const apiConfig = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-64',
   headers: {
@@ -22,8 +19,6 @@ const apiConfig = {
     'Content-Type': "application/json"
   }
 }
-
-let userId = null;
 
 const popupAddCard = new PopupWithForm('.popup_card', submitNewCard);
 const popupProfileOpen = new PopupWithForm('.popup_profile', submitNewInfo);
@@ -64,8 +59,6 @@ function renderCard(data) {
 const sectionCard = new Section(renderCard, '.elements')
 
 //добавим новую карточку
-const addButton = document.querySelector('.profile__add-button');
-
 addButton.addEventListener('click', () => {
   popupAddCard.open();
   cardFormValidator.clearValidationForm();
@@ -89,10 +82,7 @@ popupAddCard.setEventListeners();
 popupImageOpen.setEventListeners();
 
 
-
 //редактируем профиль
-const editButton = document.querySelector('.profile__edit-button');
-
 editButton.addEventListener('click', () => {
   popupProfileOpen.open();
   const { name, about } = userInfo.getUserInfo();
@@ -117,10 +107,7 @@ function submitNewInfo(inputNewData) {
 popupProfileOpen.setEventListeners();
 
 
-
 //редактируем аватар 
-const editAvatarButton = document.querySelector('.profile__avatar-button');
-
 editAvatarButton.addEventListener('click', () => {
   popupAvatar.open();
   popupAvararFormValidator.clearValidationForm();
@@ -141,7 +128,6 @@ function submitNewAvatar(inputNewData) {
 }
 
 popupAvatar.setEventListeners();
-
 
 
 //подтверждаем удаление попап 
@@ -181,8 +167,6 @@ function handleCardLike(card, cardId, isLiked) {
   }
 }
 
-
-
 //валидация
 const profileFormValidator = new FormValidator(options, profileForm);
 profileFormValidator.enableValidation();
@@ -192,4 +176,3 @@ cardFormValidator.enableValidation();
 
 const popupAvararFormValidator = new FormValidator(options, avatarForm);
 popupAvararFormValidator.enableValidation();
-
