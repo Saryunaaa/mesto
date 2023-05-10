@@ -1,5 +1,5 @@
 import './index.css'; // добавьте импорт главного файла стилей
-import {apiConfig, forms, profileForm, cardForm, avatarForm, userId, editAvatarButton, editButton, addButton, options } from "../utils/constants.js";
+import {apiConfig, forms, profileForm, cardForm, avatarForm, editAvatarButton, editButton, addButton, options } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -16,6 +16,7 @@ const popupProfileOpen = new PopupWithForm('.popup_profile', submitNewInfo);
 const popupAvatar = new PopupWithForm('.popup_avatar', submitNewAvatar);
 const popupDelete = new PopupWithConfirmation('.popup_delete', submitDeleteCard);
 const popupImageOpen = new PopupWithImage('.popup_zoom');
+let userId = null;
 
 
 const createNewCard = (data, userId, cardTemplate, handleCardClick, handleCardDelete, handleCardLike) => {
